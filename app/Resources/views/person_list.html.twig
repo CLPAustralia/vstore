@@ -1,0 +1,9 @@
+<h3>Search Result</h3>
+{% for person in personList %}
+  <p>Name: {{ person.title }}: {{ person.lastName }}, {{ person.firstName }}</p>
+  <ul>
+    {% for address in person.addresses() %}
+    <li>{{ address.type }}: {{ address.addressLine1 }}, {{ address.addressLine2 }}</li>
+    {% endfor %}
+  </ul>
+{% endfor %}
