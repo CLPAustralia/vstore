@@ -43,7 +43,7 @@ class Person
     private $lastName;
 
     /**
-     * @ORM\ManyToMany(targetEntity="Address")
+     * @ORM\ManyToMany(targetEntity="Address", cascade={"persist", "remove"})
      * @ORM\JoinTable(name="person_addresses", 
      *                joinColumns={@ORM\JoinColumn(name="person_id", referencedColumnName="id")}, 
      *                inverseJoinColumns={@ORM\JoinColumn(name="address_id", referencedColumnName="id")})
