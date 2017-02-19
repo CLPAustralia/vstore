@@ -11,6 +11,9 @@ use Symfony\Component\HttpFoundation\Request;
 
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 
+/**
+ * @Route("/person")
+ */
 class PersonController extends Controller
 {
 
@@ -34,11 +37,11 @@ class PersonController extends Controller
       $em->persist($person);
       $em->flush();
 
-      return $this->render('person_show.html.twig', array('person' => $person));
+      return $this->render('person/person_show.html.twig', array('person' => $person));
 
     }
 
-    return $this->render('person_new.html.twig', array('form' => $form->createView()));
+    return $this->render('person/person_new.html.twig', array('form' => $form->createView()));
 
   }
 
@@ -54,7 +57,7 @@ class PersonController extends Controller
     {
       throw $this->createNotFoundException("Unable to find person by id: $id");
     }
-    return $this->render('person_show.html.twig', array('person' => $person));
+    return $this->render('person/person_show.html.twig', array('person' => $person));
 
   }
 
@@ -63,7 +66,7 @@ class PersonController extends Controller
    */
   public function searchPersonAction(Request $request)
   {
-    return $this->render('person_search.html.twig'); 
+    return $this->render('person/person_search.html.twig'); 
   }
 
   /**
@@ -91,7 +94,7 @@ class PersonController extends Controller
     $person->setTitle('Miss')->setFirstName('Test Person 2 Firstname')->setLastName('Test Person 2 Last Name');
     $personList[] = $person;
     
-    return $this->render('person_list.html.twig', array('personList' => $result)); 
+    return $this->render('person/person_list.html.twig', array('personList' => $result)); 
 
   }
 
