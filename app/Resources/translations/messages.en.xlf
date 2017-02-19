@@ -4,15 +4,15 @@
         <body>
             <trans-unit id="title_new_person">
                 <source>New Person</source>
-                <target>ENGLISH New Person</target>
+                <target>New Person</target>
             </trans-unit>
             <trans-unit id="title_show_person">
                 <source>Show Person</source>
-                <target>ENGLISH Show Person</target>
+                <target>Show Person</target>
             </trans-unit>
             <trans-unit id="title_search_person">
                 <source>Search Person</source>
-                 <target>ENGLISH Search Person</target>
+                 <target>Search Person</target>
              </trans-unit>
             <trans-unit id="field_first_name">
                 <source>First Name</source>
@@ -24,7 +24,7 @@
             </trans-unit>
             <trans-unit id="button_save">
                 <source>Save</source>
-                <target>ENGLISH Save</target>
+                <target>Save</target>
             </trans-unit>
         </body>
     </file>
