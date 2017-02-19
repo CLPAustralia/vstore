@@ -22,15 +22,6 @@ class PersonController extends Controller
 
     $person = new Person();
 
-    // TEST
-    $addr = new Address();
-    $addr->setType('Home');
-    $person->addAddress($addr);
-
-    $addr = new Address();
-    $addr->setType('Work');
-    $person->addAddress($addr);
-
     $form = $this->createForm(PersonType::class, $person);
 
     $form->handleRequest($request);
