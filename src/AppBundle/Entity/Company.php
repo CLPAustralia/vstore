@@ -36,7 +36,7 @@ class Company
     private $abn;
 
     /**
-     * @ORM\ManyToMany(targetEntity="Address") 
+     * @ORM\ManyToMany(targetEntity="Address", cascade={"persist", "remove"})
      * @ORM\JoinTable(name="companies_addresses",
      *                joinColumns={@ORM\JoinColumn(name="address_id", referencedColumnName="id")},
      *                inverseJoinColumns={@ORM\JoinColumn(name="company_id", referencedColumnName="id")})

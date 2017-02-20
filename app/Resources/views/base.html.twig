@@ -5,7 +5,8 @@
         <title>{% block title %}Welcome!{% endblock %}</title>
         {% block stylesheets %}
              <style>
-                 #nav-menu .ui-menu-item { display: inline-block; }
+                 #nav-menu li { display: inline-block; }
+                 #nav-menu li li { display: inline; }
              </style>
             <link rel="stylesheet" href="{{ asset('css/jquery-ui.css') }}">
             <link rel="stylesheet" href="{{ asset('css/jquery-ui.structure.css') }}">
@@ -18,14 +19,14 @@
             <ul id="nav-menu">
                 <li><div>Person</div>
                     <ul>
-                        <li><div>Add Person</div></li>
-                        <li><div>Search Person</div></li>
+                        <li><div><a href="{{ path('person_new') }}">Add</a></div></li>
+                        <li><div><a href="{{ path('person_search') }}">Search</a></div></li>
                     </ul>
                 </li>
                 <li><div>Company</div>
                      <ul>
-                         <li><div>Add Person</div></li>
-                         <li><div>Search Person</div></li>
+                         <li><div><a href="{{ path('company_new') }}">Add</a></div></li>
+                         <li><div><a href="{{ path('company_search') }}">Search</a></div></li>
                     </ul>
                 </li>
                 <li><div>Address</div></li>
