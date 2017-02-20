@@ -1,0 +1,11 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}
+  {% trans %}Show Product{% endtrans %}
+{% endblock %}
+
+{% block body %}
+  <p>{% trans %}Product UPC:{% endtrans %} {{ product.UPC }}</p>
+   <p>{% trans %}Product Name:{% endtrans %} {{ product.name }}</p>
+   <p>{% trans %}Product Description:{% endtrans %} {{ product.description }}</p>
+{% endblock%}
