@@ -18,9 +18,9 @@ class PersonController extends Controller
 {
 
   /**
-   * @Route("/newPerson", name="new_person")
+   * @Route("/new", name="person_new")
    */
-  public function newPersonAction(Request $request)
+  public function newAction(Request $request)
   {
 
     $person = new Person();
@@ -46,9 +46,9 @@ class PersonController extends Controller
   }
 
   /**
-   * @Route("/showPerson/{id}", name="show_person")
+   * @Route("/show/{id}", name="person_show")
    */
-  public function showPersonAction(Request $request, $id)
+  public function showAction(Request $request, $id)
   {
     
     $repo = $this->getRepo(); 
@@ -62,15 +62,15 @@ class PersonController extends Controller
   }
 
   /**
-   * @Route("/searchPerson", name="search_person")
+   * @Route("/search", name="person_search")
    */
-  public function searchPersonAction(Request $request)
+  public function searchAction(Request $request)
   {
     return $this->render('person/person_search.html.twig'); 
   }
 
   /**
-   * @Route("/listPerson", name="list_person")
+   * @Route("/list", name="person_list")
    */
   public function listPersonAction(Request $request){
 
