@@ -3,14 +3,43 @@
     <head>
         <meta charset="UTF-8" />
         <title>{% block title %}Welcome!{% endblock %}</title>
-        {% block stylesheets %}{% endblock %}
+        {% block stylesheets %}
+             <style>
+                 #nav-menu .ui-menu-item { display: inline-block; }
+             </style>
+            <link rel="stylesheet" href="{{ asset('css/jquery-ui.css') }}">
+            <link rel="stylesheet" href="{{ asset('css/jquery-ui.structure.css') }}">
+            <link rel="stylesheet" href="{{ asset('css/jquery-ui.theme.css') }}">
+        {% endblock %}
         <link rel="icon" type="image/x-icon" href="{{ asset('favicon.ico') }}" />
     </head>
     <body>
-        {% block header %}{% endblock%}
+        {% block header %}
+            <ul id="nav-menu">
+                <li><div>Person</div>
+                    <ul>
+                        <li><div>Add Person</div></li>
+                        <li><div>Search Person</div></li>
+                    </ul>
+                </li>
+                <li><div>Company</div>
+                     <ul>
+                         <li><div>Add Person</div></li>
+                         <li><div>Search Person</div></li>
+                    </ul>
+                </li>
+                <li><div>Address</div></li>
+            </ul>
+        {% endblock%}
         {% block body %}{% endblock %}
         {% block sidebar %} {% endblock %}
         {% block footer %}<footer>&copy; Copyright 2017</footer>{% endblock %}
-        {% block javascripts %}{% endblock %}
+        {% block javascripts %}
+            <script src="{{ asset('js/jquery.js') }}"></script>
+            <script src="{{ asset('js/jquery-ui.js') }}"></script>
+            <script type="text/javascript">
+                $(function(){$("#nav-menu").menu()});
+            </script>
+        {% endblock %}
     </body>
 </html>
