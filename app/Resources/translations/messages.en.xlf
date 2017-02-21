@@ -115,6 +115,10 @@
             </trans-unit>
 
             <!-- Menu -->
+            <trans-unit id="menu.home">
+                <source>menu.home</source>
+                <target>Home</target>
+            </trans-unit>
             <trans-unit id="menu.person">
                 <source>menu.person</source>
                 <target>Person</target>

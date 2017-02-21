@@ -15,12 +15,13 @@
         {% endblock %}
 
         <link rel="icon" type="image/x-icon" href="{{ asset('favicon.ico') }}" />
-`
+
     </head>
     <body>
 
         {% block header %}
             <ul id="nav-menu">
+                <li><div><a href="{{ path("homepage") }}">{{ 'menu.home'|trans }}</a></div></li>
                 <li><div>{{ 'menu.person'|trans }}</div>
                     <ul>
                         <li><div><a href="{{ path('person_new') }}">{{ 'menu.person.add'|trans }}</a></div></li>
