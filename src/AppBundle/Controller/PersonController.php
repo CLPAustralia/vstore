@@ -46,13 +46,30 @@ class PersonController extends Controller
   }
 
   /**
+   * @Route("/edit/{id}", name="person_edit")
+   */
+  public function editAction(Request $request, $id)
+  {
+    $person = $this->getPersonById($id);
+    $form = $this->createForm(PersonType::class, $person);
+    $form->handleRequest($request);
+    if ($form->isSubmitted() && $form->isValid())
+    {
+      $em = $this->getDoctrine()->getManager();
+      $em->flush();
+
+      return $this->redirectToRoute('person_show', array('id' => $person->getId()));
+    }
+    return $this->render('person/person_edit.html.twig', array('form' => $form->createView()));
+  }
+
+  /**
    * @Route("/show/{id}", name="person_show")
    */
   public function showAction(Request $request, $id)
   {
     
-    $repo = $this->getRepo(); 
-    $person = $repo->findOneById($id);
+    $person = $this->getPersonById($id);
     if (!$person) 
     {
       throw $this->createNotFoundException("Unable to find person by id: $id");
@@ -93,6 +110,12 @@ class PersonController extends Controller
   private function getRepo()
   {
     return $this->getDoctrine()->getRepository('AppBundle:Person');
+  }
+
+  private function getPersonById($id)
+  {
+    $repo = $this->getRepo(); 
+    return $repo->findOneById($id);
   }
 
 }

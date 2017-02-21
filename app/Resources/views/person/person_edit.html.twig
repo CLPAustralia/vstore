@@ -6,14 +6,13 @@
 
 {% block body %}
 
-  <h3>{{ 'person.new'|trans }}</h3>
-
   {# TEST ONLY for JQuery UI (class attribute) #}
   {{ form_start(form, {'attr':{'class':'ui-widget'}}) }}
     {{ form_row(form.title) }}
     {{ form_row(form.firstName) }}
     {{ form_row(form.lastName) }}
     <h5>{{ 'addresses'|trans }}</h5>
+    {{ form_row(form.addresses) }}
     <div class="addresses" data-prototype="{{ form_widget(form.addresses.vars.prototype)|e('html_attr') }}">
     </div>
   {{ form_end(form) }}
