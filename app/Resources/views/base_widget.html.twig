@@ -1,0 +1,14 @@
+{% block widget_title %}
+  {% if widget_title is defined %}
+    {{ widget_title|trans }}
+  {% endif %}
+{% endblock %}
+
+{% block widget %}
+{% endblock %}
+
+{% block javascripts %}
+    <script src="{{ asset('js/jquery.js') }}"></script>
+    <script src="{{ asset('js/jquery-ui.js') }}"></script>
+{% endblock %}
+

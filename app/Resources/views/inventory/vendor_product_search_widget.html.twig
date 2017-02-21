@@ -1,0 +1,34 @@
+{% extends 'base_widget.html.twig' %}
+
+{% block widget %}
+
+  <form action="#" method="post">
+    <label for="product_name">{{ 'product.name'|trans }}</label>
+    <input type="text" id="product_name" />
+  </form>
+
+  <div id="searchResult"></div>
+
+{% endblock %}
+
+{% block javascripts %}
+
+  {{ parent() }}
+
+  <script type="text/javascript">
+    $(function(){
+      $("#product_name").keyup(function(){
+        $product_name = $("#product_name").val();
+        $.ajax({
+          type: "POST",
+          url: "/product/list",
+          data: {"name": $product_name, "selectable": "{{ selectable }}" },
+          success: function(response) {
+            $("#searchResult").html(response);
+          }
+        });
+       });
+    }); 
+  </script>
+
+{% endblock %}

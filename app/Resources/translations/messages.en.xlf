@@ -2,30 +2,186 @@
 <xliff version="1.2" xmlns="urn:oasis:names:tc:xliff:document:1.2">
     <file source-language="en" target-language="en" datatype="plaintext" original="file.ext">
         <body>
-            <trans-unit id="title_new_person">
-                <source>New Person</source>
-                <target>New Person</target>
+
+            <trans-unit id="search.result">
+                <source>search.result</source>
+                <target>Search Result</target>
             </trans-unit>
-            <trans-unit id="title_show_person">
-                <source>Show Person</source>
-                <target>Show Person</target>
+
+            <!-- Person  -->
+            <trans-unit id="person.title">
+                <source>person.title</source>
+                <target>Title</target>
             </trans-unit>
-            <trans-unit id="title_search_person">
-                <source>Search Person</source>
-                 <target>Search Person</target>
-             </trans-unit>
-            <trans-unit id="field_first_name">
-                <source>First Name</source>
+            <trans-unit id="person.first.name">
+                <source>person.first.name</source>
                 <target>First Name</target>
             </trans-unit>
-            <trans-unit id="field_last_name">
-                <source>Last Name</source>
+            <trans-unit id="person.last.name">
+                <source>person.last.name</source>
                 <target>Last Name</target>
             </trans-unit>
-            <trans-unit id="button_save">
-                <source>Save</source>
+            <trans-unit id="person.new">
+                <source>person.new</source>
+                <target>New Person</target>
+            </trans-unit>
+            <trans-unit id="person.show">
+                <source>person.show</source>
+                <target>Show Person</target>
+            </trans-unit>
+            <trans-unit id="person.search">
+                <source>person.search</source>
+                 <target>Search Person</target>
+             </trans-unit>
+
+            <!-- Company -->
+            <trans-unit id="company.new">
+                <source>company.new</source>
+                <target>New Company</target>
+            </trans-unit>
+            <trans-unit id="company.show">
+                <source>company.show</source>
+                <target>Show Company</target>
+            </trans-unit>
+            <trans-unit id="company.search">
+                <source>company.search</source>
+                 <target>Search Company</target>
+             </trans-unit>
+            <trans-unit id="company.name">
+                <source>company.name</source>
+                 <target>Company Name</target>
+             </trans-unit>
+
+            <!-- Inventory -->
+            <trans-unit id="inventory.new">
+                <source>inventory.new</source>
+                <target>New Inventory</target>
+            </trans-unit>
+            <trans-unit id="inventory.vendor">
+                <source>inventory.vendor</source>
+                <target>Vendor</target>
+            </trans-unit>
+            <trans-unit id="inventory.product">
+                <source>inventory.product</source>
+                <target>Product</target>
+            </trans-unit>
+            <trans-unit id="inventory.quantity">
+                <source>inventory.quantity</source>
+                <target>Quantity</target>
+            </trans-unit>
+
+            <!-- Address -->
+           <trans-unit id="addresses">
+                <source>addresses</source>
+                <target>Addresses</target>
+            </trans-unit>
+           <trans-unit id="address.type">
+                <source>address.type</source>
+                <target>Addresses Type</target>
+            </trans-unit>
+           <trans-unit id="address.line1">
+                <source>address.line1</source>
+                <target>Address Line 1</target>
+            </trans-unit>
+           <trans-unit id="address.line2">
+                <source>address.line2</source>
+                <target>Address Line 2</target>
+            </trans-unit>
+ 
+            <!-- Product -->
+            <trans-unit id="product.new">
+                <source>product.new</source>
+                <target>New Product</target>
+            </trans-unit>
+            <trans-unit id="product.name">
+                <source>product.name</source>
+                <target>Product Name</target>
+            </trans-unit>
+            <trans-unit id="product.description">
+                <source>product.description</source>
+                <target>Product Description</target>
+            </trans-unit>
+            <trans-unit id="product.upc">
+                <source>product.upc</source>
+                <target>Product UPC</target>
+            </trans-unit>
+            <trans-unit id="product.search">
+                <source>product.search</source>
+                <target>Search Product</target>
+            </trans-unit>
+            <trans-unit id="product.show">
+                <source>product.show</source>
+                <target>Show Product</target>
+            </trans-unit>
+
+            <!-- Menu -->
+            <trans-unit id="menu.person">
+                <source>menu.person</source>
+                <target>Person</target>
+            </trans-unit>
+            <trans-unit id="menu.person.add">
+                <source>menu.person.add</source>
+                <target>Add Person</target>
+            </trans-unit>
+            <trans-unit id="menu.person.search">
+                <source>menu.person.search</source>
+                <target>Search Person</target>
+            </trans-unit>
+            <trans-unit id="menu.company">
+                <source>menu.company</source>
+                <target>Company</target>
+            </trans-unit>
+            <trans-unit id="menu.company.add">
+                <source>menu.company.add</source>
+                <target>Add Company</target>
+            </trans-unit>
+            <trans-unit id="menu.company.search">
+                <source>menu.company.search</source>
+                <target>Search Company</target>
+            </trans-unit>
+            <trans-unit id="menu.product">
+                <source>menu.product</source>
+                <target>Product</target>
+            </trans-unit>
+            <trans-unit id="menu.product.add">
+                <source>menu.product.add</source>
+                <target>Add Product</target>
+            </trans-unit>
+            <trans-unit id="menu.product.search">
+                <source>menu.product.search</source>
+                <target>Search Product</target>
+            </trans-unit>
+            <trans-unit id="menu.inventory">
+                <source>menu.inventory</source>
+                <target>Inventory</target>
+            </trans-unit>
+            <trans-unit id="menu.inventory.add">
+                <source>menu.inventory.add</source>
+                <target>Add Inventory</target>
+            </trans-unit>
+            <trans-unit id="menu.inventory.search">
+                <source>menu.inventory.search</source>
+                <target>Search Inventory</target>
+            </trans-unit>
+
+            <!-- Button -->
+            <trans-unit id="button.address.add">
+                <source>button.address.add</source>
+                <target>Add Address</target>
+            </trans-unit>
+            <trans-unit id="button.inventory.select.vendor">
+                <source>button.inventory.select.vendor</source>
+                <target>Select Vendor</target>
+            </trans-unit>
+            <trans-unit id="button.inventory.select.product">
+                <source>button.inventory.select.product</source>
+                <target>Select Product</target>
+            </trans-unit>
+            <trans-unit id="button.save">
+                <source>button.save</source>
                 <target>Save</target>
             </trans-unit>
+
         </body>
     </file>
 </xliff>

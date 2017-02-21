@@ -1,18 +1,17 @@
 {% extends 'base.html.twig' %}
 
 {% block title%}
-  {% trans %}New Company{% endtrans %}
+  {{ 'company.new'|trans }}
 {% endblock%}
 
 {% block body %}
-{# TEST ONLY for JQuery UI#}
+
+  {# TEST ONLY for JQuery UI (class attribute) #}
   {{ form_start(form, {'attr':{'class':'ui-widget'}}) }}
     {{ form_row(form.name) }}
-
-    <h5>Addresses</h5>
+    <h5>{{ 'addresses'|trans }}</h5>
     <div class="addresses" data-prototype="{{ form_widget(form.addresses.vars.prototype)|e('html_attr') }}">
     </div>
-
   {{ form_end(form) }}
 
 {% endblock %}
@@ -28,7 +27,7 @@
       var $collectionHolder = $('.addresses');
 
       // Setup "add new address" link
-      var $addAddressLink = $('<a href="#" class="add_address_link">Add an address</a>');
+      var $addAddressLink = $("<a href='#' class='add_address_link'>{{ 'button.address.add'|trans }}</a>");
       var $newLinkDiv = $('<div></div>').append($addAddressLink);
       $collectionHolder.append($newLinkDiv);
 

@@ -1,0 +1,32 @@
+{% extends 'base_widget.html.twig' %}
+
+{% block widget %}
+
+  <h3>{{ 'search.result'|trans }}</h3>
+
+  {% for product in productList %}
+    {% if selectable is defined and selectable == true %}
+      <input type="radio" name="product" id="{{ product.id }}" >
+    {% endif %}
+
+    <p>{{ 'product.upc'|trans }}: {{ product.upc }}</p>
+    <p>{{ 'product.name'|trans }}: {{ product.name }}</p>
+    <p>{{ 'product.description'|trans }}: {{ product.description }}</p>
+
+  {% endfor %}
+
+{% endblock %}
+
+{% block javascripts %}
+
+  {{ parent() }}
+
+  <script type="text/javascript">
+    var selectedProductId;
+    $("input[name='product']:radio").change(function() { 
+        selectedProductId = $(this).attr("id");
+    })  
+  </script>
+
+{% endblock %}
+

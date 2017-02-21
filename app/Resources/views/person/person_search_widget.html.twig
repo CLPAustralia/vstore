@@ -1,0 +1,35 @@
+{% extends 'base_widget.html.twig' %}
+
+{% block widget %}
+
+  <form action="#" method="post">
+    <label for="first_name">{{ 'person.first.name'|trans }}</label><input type="text" id="first_name" />
+    <label for="last_name">{{ 'person.last.name'|trans }}</label><input type="text" id="last_name" />
+  </form>
+
+  <div id="searchResult"></div>
+
+{% endblock %}
+
+{% block javascripts %}
+
+  {{ parent() }}
+
+  <script type="text/javascript">
+    $("document").ready(function(){
+      $("#first_name").keyup(function(){
+        $first_name = $("#first_name").val();
+        $last_name = $("#last_name").val();
+        $.ajax({
+          type: "POST",
+          url: "/person/list",
+          data: {"firstName": $first_name, "lastName": $last_name},
+          success: function(response) {
+            $("#searchResult").html(response);
+          }
+        });
+       });
+    }); 
+  </script>
+
+{% endblock %}

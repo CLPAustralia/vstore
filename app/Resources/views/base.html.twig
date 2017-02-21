@@ -1,45 +1,59 @@
 <!DOCTYPE html>
 <html>
     <head>
+ 
         <meta charset="UTF-8" />
+        
         <title>{% block title %}Welcome!{% endblock %}</title>
+
         {% block stylesheets %}
              <style>
                  #nav-menu li { display: inline-block; }
                  #nav-menu li li { display: inline; }
              </style>
             <link rel="stylesheet" href="{{ asset('css/jquery-ui.css') }}">
-            <link rel="stylesheet" href="{{ asset('css/jquery-ui.structure.css') }}">
-            <link rel="stylesheet" href="{{ asset('css/jquery-ui.theme.css') }}">
         {% endblock %}
+
         <link rel="icon" type="image/x-icon" href="{{ asset('favicon.ico') }}" />
+`
     </head>
     <body>
+
         {% block header %}
             <ul id="nav-menu">
-                <li><div>Person</div>
+                <li><div>{{ 'menu.person'|trans }}</div>
                     <ul>
-                        <li><div><a href="{{ path('person_new') }}">Add</a></div></li>
-                        <li><div><a href="{{ path('person_search') }}">Search</a></div></li>
+                        <li><div><a href="{{ path('person_new') }}">{{ 'menu.person.add'|trans }}</a></div></li>
+                        <li><div><a href="{{ path('person_search') }}">{{ 'menu.person.search'|trans }}</a></div></li>
                     </ul>
                 </li>
-                <li><div>Company</div>
+                <li><div>{{ 'menu.company'|trans }}</div>
                      <ul>
-                         <li><div><a href="{{ path('company_new') }}">Add</a></div></li>
-                         <li><div><a href="{{ path('company_search') }}">Search</a></div></li>
+                         <li><div><a href="{{ path('company_new') }}">{{ 'menu.company.add'|trans }}</a></div></li>
+                         <li><div><a href="{{ path('company_search') }}">{{ 'menu.company.search'|trans }}</a></div></li>
                     </ul>
                 </li>
-                <li><div>Product</div>
+                <li><div>{{ 'menu.product'|trans }}</div>
                      <ul>
-                         <li><div><a href="{{ path('product_new') }}">Add</a></div></li>
-                         <li><div><a href="{{ path('product_search') }}">Search</a></div></li>
+                         <li><div><a href="{{ path('product_new') }}">{{ 'menu.product.add'|trans }}</a></div></li>
+                         <li><div><a href="{{ path('product_search') }}">{{ 'menu.product.search'|trans }}</a></div></li>
+                    </ul>
+                </li>
+                <li><div>{{ 'menu.inventory'|trans }}</div>
+                     <ul>
+                         <li><div><a href="{{ path('inventory_new') }}">{{ 'menu.inventory.add'|trans }}</a></div></li>
+                         <li><div><a href="{{ path('inventory_search') }}">{{ 'menu.inventory.search'|trans }}</a></div></li>
                     </ul>
                 </li>
             </ul>
         {% endblock%}
+
         {% block body %}{% endblock %}
+
         {% block sidebar %} {% endblock %}
+
         {% block footer %}<footer>&copy; Copyright 2017</footer>{% endblock %}
+
         {% block javascripts %}
             <script src="{{ asset('js/jquery.js') }}"></script>
             <script src="{{ asset('js/jquery-ui.js') }}"></script>
@@ -47,5 +61,6 @@
                 $(function(){$("#nav-menu").menu()});
             </script>
         {% endblock %}
+
     </body>
 </html>

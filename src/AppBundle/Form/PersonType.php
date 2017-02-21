@@ -16,14 +16,15 @@ class PersonType extends AbstractType
 
   public function buildForm(FormBuilderInterface $builder, array $options)
   {
-    $builder->add('title', TextType::class)
-            ->add('firstName', TextType::class)
-            ->add('lastName', TextType::class)
-            ->add('save', SubmitType::class)
+    $builder->add('title', TextType::class, array('label' => 'person.title'))
+            ->add('firstName', TextType::class, array('label' => 'person.first.name'))
+            ->add('lastName', TextType::class, array('label' => 'person.last.name'))
+            ->add('save', SubmitType::class, array('label' => 'button.save'))
             ->add('addresses', 
                   CollectionType::class, 
                   array('entry_type' => AddressType::class, 
-                        'allow_add' => true));
+                        'allow_add' => true,
+                        'label' => 'addresses'));
   }
 
   public function configureOptions(OptionsResolver $resolver)

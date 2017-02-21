@@ -75,6 +75,7 @@ class CompanyController extends Controller
   public function listCompanyAction(Request $request){
 
     $name = $request->request->get("name");
+    $selectable = $request->request->get("selectable");
 
     $repo = $this->getRepo();
     $query = $repo->createQueryBuilder('c')
@@ -83,7 +84,7 @@ class CompanyController extends Controller
       ->getQuery();
     $result = $query->getResult();
 
-    return $this->render('company/company_list.html.twig', array('companyList' => $result)); 
+    return $this->render('company/company_list_widget.html.twig', array('companyList' => $result, 'selectable' => $selectable)); 
 
   }
 

@@ -1,11 +1,11 @@
 {% extends 'base.html.twig' %}
 
 {% block title%}
-  {% trans %}New Product{% endtrans %}
+  {{ 'product.new'|trans }}
 {% endblock%}
 
 {% block body %}
-{# TEST ONLY for JQuery UI#}
+  {# TEST ONLY for JQuery UIi (class attribute) #}
   {{ form_start(form, {'attr':{'class':'ui-widget'}}) }}
     {{ form_widget(form) }}
   {{ form_end(form) }}

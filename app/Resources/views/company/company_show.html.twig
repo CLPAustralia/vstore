@@ -1,12 +1,12 @@
 {% extends 'base.html.twig' %}
 
 {% block title %}
-  {% trans %}Show Company{% endtrans %}
+  {{ 'company.show'|trans }}
 {% endblock %}
 
 {% block body %}
-  <p>{% trans %}Company Name:{% endtrans %} {{ company.name }}</p>
-  <h5>Addresses</h5>
+  <p>{{ 'company.name'|trans }}: {{ company.name }}</p>
+  <h5>{{ 'addresses'|trans }}</h5>
   <ul>
     {% for address in company.addresses() %}
     <li>{{ address.type }}: {{ address.addressLine1 }}, {{ address.addressLine2 }}</li>

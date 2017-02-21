@@ -1,37 +1,13 @@
 {% extends 'base.html.twig' %}
 
 {% block title %}
-  {% trans %}Search Company{% endtrans %}
+  {{ 'company.search'|trans }}
 {% endblock %}
 
 {% block body %}
-
-  <form action="#" method="post">
-    <label for="company_name">{% trans %}Company Name{% endtrans %}</label><input type="text" id="company_name" />
-  </form>
-
-  <div id="searchResult"></div>
-
+  {% include 'company/company_search_widget.html.twig' with {'selectable' : false} %}
 {% endblock %}
 
 {% block javascripts %}
-
   {{ parent() }}
-
-  <script type="text/javascript">
-    $("document").ready(function(){
-      $("#company_name").keyup(function(){
-        $company_name = $("#company_name").val();
-        $.ajax({
-          type: "POST",
-          url: "/listCompany",
-          data: {"name": $company_name},
-          success: function(response) {
-            $("#searchResult").html(response);
-          }
-        });
-       });
-    }); 
-  </script>
-
 {% endblock %}

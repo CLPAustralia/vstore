@@ -1,17 +1,14 @@
 {% extends 'base.html.twig' %}
 
 {% block title %}
-  {% trans %}Search Product{% endtrans %}
+  {{ 'product.search'|trans }}
 {% endblock %}
 
 {% block body %}
-
   <form action="#" method="post">
-    <label for="product_name">{% trans %}Product Name{% endtrans %}</label><input type="text" id="product_name" />
+    <label for="product_name">{{ 'product.name'|trans }}</label><input type="text" id="product_name" />
   </form>
-
-  <div id="searchResult"></div>
-
+  <div id="productSearchResult"></div>
 {% endblock %}
 
 {% block javascripts %}
@@ -27,7 +24,7 @@
           url: "/listProduct",
           data: {"name": $product_name},
           success: function(response) {
-            $("#searchResult").html(response);
+            $("#productSearchResult").html(response);
           }
         });
        });

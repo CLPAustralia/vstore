@@ -97,4 +97,28 @@ class VendorProduct
     {
         return $this->product;
     }
+
+    /**
+     * Set vendor
+     *
+     * @param \AppBundle\Entity\Company $vendor
+     *
+     * @return VendorProduct
+     */
+    public function setVendor(\AppBundle\Entity\Company $vendor = null)
+    {
+        $this->vendor = $vendor;
+
+        return $this;
+    }
+
+    /**
+     * Get vendor
+     *
+     * @return \AppBundle\Entity\Company
+     */
+    public function getVendor()
+    {
+        return $this->vendor;
+    }
 }

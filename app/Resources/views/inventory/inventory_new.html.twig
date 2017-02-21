@@ -1,0 +1,89 @@
+{% extends 'base.html.twig' %}
+
+{% block title%}
+  {{ 'inventory.new'|trans }}
+{% endblock%}
+
+{% block body %}
+  {{ form_start(form) }}
+  
+    <button id="select_vendor">{{ 'button.inventory.select.vendor'|trans }}</button>
+    <div id="vendor_dialog">
+      {% include 'company/company_search_widget.html.twig' with {'selectable' : true} %}
+    </div>
+    <div id="vendor"></div>
+
+    <button id="select_product">{{ 'button.inventory.select.product'|trans }}</button>
+    <div id="product_dialog">
+      {% include 'inventory/vendor_product_search_widget.html.twig' with {'selectable' : true} %}
+    </div>
+    <div id="product"></div>
+
+    {{ form_row(form.quantity) }}
+
+  {{ form_end(form, {render_rest: false}) }}
+{% endblock %}
+
+{% block javascripts %}
+
+  {{ parent() }}
+
+  <script type="text/javascript">
+
+    productDialog = $( "#product_dialog" ).dialog({
+      autoOpen: false,
+      height: 700,
+      width: 900,
+      modal: true,
+      buttons: {
+        "Ok": function(){
+          productDialog.dialog( "close" );
+          $.ajax({
+            type: "POST",
+            url: "/product/show/" + selectedProductId,
+            data: {"id": selectedProductId },
+            success: function(response) {
+alert(response);
+              $("#product").html(response);
+            }   
+          }); 
+        },
+        Cancel: function() {
+          productDialog.dialog( "close" );
+        }
+      },
+    });
+    $( "#select_product" ).button().on( "click", function(e) {
+      e.preventDefault();
+      productDialog.dialog( "open" );
+    });
+
+    vendorDialog = $( "#vendor_dialog" ).dialog({
+      autoOpen: false,
+      height: 700,
+      width: 900,
+      modal: true,
+      buttons: {
+        "Ok": function(){
+          vendorDialog.dialog( "close" );
+          $.ajax({
+            type: "POST",
+            url: "/company/show/" + selectedCompanyId,
+            data: {"id": selectedCompanyId },
+            success: function(response) {
+              $("#vendor").html(response);
+            } 
+          }); 
+        },
+        Cancel: function() {
+          vendorDialog.dialog( "close" );
+        }
+      },
+    });
+    $( "#select_vendor" ).button().on( "click", function(e) {
+      e.preventDefault();
+      vendorDialog.dialog( "open" );
+    });
+
+  </script>
+{% endblock%}

@@ -16,12 +16,13 @@ class CompanyType extends AbstractType
 
   public function buildForm(FormBuilderInterface $builder, array $options)
   {
-    $builder->add('name', TextType::class)
-            ->add('save', SubmitType::class)
+    $builder->add('name', TextType::class, array('label' => 'company.name'))
+            ->add('save', SubmitType::class, array('label' => 'button.save'))
             ->add('addresses', 
                   CollectionType::class, 
                   array('entry_type' => AddressType::class, 
-                        'allow_add' => true));
+                        'allow_add' => true,
+                        'label' => 'addresses'));
   }
 
   public function configureOptions(OptionsResolver $resolver)

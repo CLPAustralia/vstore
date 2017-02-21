@@ -75,6 +75,7 @@ class ProductController extends Controller
   public function listProductAction(Request $request){
 
     $name = $request->request->get("name");
+    $selectable = $request->request->get("selectable");
 
     $repo = $this->getRepo();
     $query = $repo->createQueryBuilder('c')
@@ -83,7 +84,7 @@ class ProductController extends Controller
       ->getQuery();
     $result = $query->getResult();
 
-    return $this->render('product/product_list.html.twig', array('productList' => $result)); 
+    return $this->render('product/product_list_widget.html.twig', array('productList' => $result, 'selectable' => $selectable)); 
 
   }
 

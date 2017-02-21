@@ -86,15 +86,7 @@ class PersonController extends Controller
       ->getQuery();
     $result = $query->getResult();
 
-    //TODO: search
-    $person = new Person();
-    $person->setTitle('Mr')->setFirstName('Test Person 1 Firstname')->setLastName('Test Person 1 Last Name');
-    $personList[] = $person;
-    $person = new Person();
-    $person->setTitle('Miss')->setFirstName('Test Person 2 Firstname')->setLastName('Test Person 2 Last Name');
-    $personList[] = $person;
-    
-    return $this->render('person/person_list.html.twig', array('personList' => $result)); 
+    return $this->render('person/person_list_widget.html.twig', array('personList' => $result)); 
 
   }
 

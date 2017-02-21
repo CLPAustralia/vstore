@@ -1,39 +1,14 @@
 {% extends 'base.html.twig' %}
 
 {% block title %}
-  {% trans %}Search Person{% endtrans %}
+  {{ 'person.search'|trans }}
 {% endblock %}
 
 {% block body %}
-
-  <form action="#" method="post">
-    <label for="first_name">{% trans %}First Name{% endtrans %}</label><input type="text" id="first_name" />
-    <label for="last_name">{% trans %}Last Name{% endtrans %}</label><input type="text" id="last_name" />
-  </form>
-
-  <div id="searchResult"></div>
-
+  {% include 'person/person_search_widget.html.twig' %}
 {% endblock %}
 
 {% block javascripts %}
-
   {{ parent() }}
-
-  <script type="text/javascript">
-    $("document").ready(function(){
-      $("#first_name").keyup(function(){
-        $first_name = $("#first_name").val();
-        $last_name = $("#last_name").val();
-        $.ajax({
-          type: "POST",
-          url: "/listPerson",
-          data: {"firstName": $first_name, "lastName": $last_name},
-          success: function(response) {
-            $("#searchResult").html(response);
-          }
-        });
-       });
-    }); 
-  </script>
-
 {% endblock %}
+

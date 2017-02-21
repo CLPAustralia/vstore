@@ -1,14 +1,14 @@
 {% extends 'base.html.twig' %}
 
 {% block title %}
-  {% trans %}Show Person{% endtrans %}
+  {{ 'person.show'|trans }}
 {% endblock %}
 
 {% block body %}
-  <p>{% trans %}Title:{% endtrans %} {{ person.title }}</p>
-  <p>{% trans %}First Name:{% endtrans %} {{ person.firstName }}</p>
-  <p>{% trans %}Last Name:{% endtrans %} {{ person.lastName }}</p>
-  <h5>Addresses</h5>
+  <p>{{ 'person.title'|trans }}: {{ person.title }}</p>
+  <p>{{ 'person.first.name'|trans }}: {{ person.firstName }}</p>
+  <p>{{ 'person.last.name'|trans }}: {{ person.lastName }}</p>
+  <h5>{{ 'addresses'|trans }}</h5>
   <ul>
     {% for address in person.addresses() %}
     <li>{{ address.type }}: {{ address.addressLine1 }}, {{ address.addressLine2 }}</li>

@@ -1,0 +1,31 @@
+{% extends 'base_widget.html.twig' %}
+
+{% block widget %}
+
+{% for person in personList %}
+
+  <p>
+    {% if personSelectable is defined and  personSelectable == true %}
+      <input type="radio" name="person" id="{{ person.id }}" >
+    {% endif %}
+    {% trans %}Name:{% endtrans %} {{ person.title }}: {{ person.lastName }}, {{ person.firstName }}
+  </p>
+  
+  <h5>{{ 'addresses'|trans }}</h5>
+  <ul>
+    {% for address in person.addresses() %}
+    <li>{{ address.type }}: {{ address.addressLine1 }}, {{ address.addressLine2 }}</li>
+    {% endfor %}
+  </ul>
+
+{% endfor %}
+{% endblock %}
+
+{% block javascripts %}
+{{ parent() }}
+<script type="text/javascript">
+    $("input[name='person']:radio").change(function() { 
+        alert($(this).attr("id"));
+    })
+</script>
+{% endblock %}
