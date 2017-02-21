@@ -22,7 +22,7 @@
         $product_name = $("#product_name").val();
         $.ajax({
           type: "POST",
-          url: "/listProduct",
+          url: "/product/list",
           data: {"name": $product_name},
           success: function(response) {
             $("#productSearchResult").html(response);

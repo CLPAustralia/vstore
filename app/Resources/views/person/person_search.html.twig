@@ -5,8 +5,7 @@
 {% endblock %}
 
 {% block body %}
-  <h3>{{ 'person.search'|trans }}</h3>
-  {% include 'person/person_search_widget.html.twig' %}
+  {% include 'person/person_search_widget.html.twig' with {'widgetHeading': 'person.search'} %}
 {% endblock %}
 
 {% block javascripts %}
