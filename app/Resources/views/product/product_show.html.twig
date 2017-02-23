@@ -5,8 +5,5 @@
 {% endblock %}
 
 {% block body %}
-  <h3>{{ 'product.show'|trans }}</h3>
-  <p>{{ 'product.upc'|trans }}: {{ product.UPC }}</p>
-  <p>{{ 'product.name'|trans }}: {{ product.name }}</p>
-  <p>{{ 'product.description'|trans }}: {{ product.description }}</p>
+     {% include 'product/product_show_widget.html.twig' with {'widgetHeading': 'product.show'} %}
 {% endblock%}

@@ -8,8 +8,7 @@
 
   <h3>{{ 'inventory.new'|trans }}</h3>
 
-  {{ form_start(form) }}
-  
+    <p> 
     <button id="select_vendor">{{ 'button.inventory.select.vendor'|trans }}</button>
     <div id="vendor_dialog">
       {% include 'company/company_search_widget.html.twig' with {'selectable' : true} %}
@@ -18,13 +17,29 @@
 
     <button id="select_product">{{ 'button.inventory.select.product'|trans }}</button>
     <div id="product_dialog">
-      {% include 'inventory/vendor_product_search_widget.html.twig' with {'selectable' : true} %}
+      {% include 'product/product_search_widget.html.twig' with {'selectable' : true} %}
     </div>
     <div id="product"></div>
+    </p>
 
-    {{ form_row(form.quantity) }}
+  <form id="newInventory" action="/inventory/new" method="POST">
 
-  {{ form_end(form, {render_rest: false}) }}
+    <p>
+      <label for="vendor_product_name">{{ 'vendor.product.name'|trans }}:</label>
+      <input type="text" id="vendor_product_name" name="vendor_product_name">
+    </p>
+    
+    <p>
+      <label for="quantity">{{ 'quantity'|trans }}:</label>
+      <input type="number" id="quantity" name="quantity" min="1">
+    </p>
+
+    <p>
+      <input id="submit" type="submit" value="Save">
+    </p>
+
+  </form>
+
 {% endblock %}
 
 {% block javascripts %}
@@ -43,11 +58,11 @@
           productDialog.dialog( "close" );
           $.ajax({
             type: "POST",
-            url: "/product/show/" + selectedProductId,
+            url: "/product/show/widget/" + selectedProductId,
             data: {"id": selectedProductId },
             success: function(response) {
-alert(response);
               $("#product").html(response);
+              $('#newInventory').append("<input type='hidden' name='productId' value='" + selectedProductId + "' />");
             }   
           }); 
         },
@@ -71,10 +86,11 @@ alert(response);
           vendorDialog.dialog( "close" );
           $.ajax({
             type: "POST",
-            url: "/company/show/" + selectedCompanyId,
+            url: "/company/show/widget/" + selectedCompanyId,
             data: {"id": selectedCompanyId },
             success: function(response) {
               $("#vendor").html(response);
+              $('#newInventory').append("<input type='hidden' name='companyId' value='" + selectedCompanyId + "' />");
             } 
           }); 
         },
@@ -86,6 +102,11 @@ alert(response);
     $( "#select_vendor" ).button().on( "click", function(e) {
       e.preventDefault();
       vendorDialog.dialog( "open" );
+    });
+
+    $("#submit").button().on("click", function(e){
+      $("#newInventory").submit();
+      return true;
     });
 
   </script>

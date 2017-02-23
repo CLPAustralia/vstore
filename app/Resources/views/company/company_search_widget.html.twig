@@ -1,14 +1,11 @@
 {% extends 'base_widget.html.twig' %}
 
 {% block widget %}
-
   <form action="#" method="post">
     <label for="company_name">{{ 'company.name'|trans }}</label>
     <input type="text" id="company_name" />
   </form>
-
   <div id="companySearchResult"></div>
-
 {% endblock %}
 
 {% block javascripts %}

@@ -1,0 +1,13 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}
+  {{ 'inventory.search'|trans }}
+{% endblock %}
+
+{% block body %}
+  {% include 'inventory/inventory_search_widget.html.twig' with {'selectable' : false, 'widgetHeading': 'inventory.search'} %}
+{% endblock %}
+
+{% block javascripts %}
+  {{ parent() }}
+{% endblock %}

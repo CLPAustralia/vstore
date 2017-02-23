@@ -45,21 +45,33 @@ class ProductController extends Controller
 
   }
 
+  private function getProductById($id)
+  {
+    $repo = $this->getRepo(); 
+    $product = $repo->findOneById($id);
+    if (!$product) 
+    {   
+      throw $this->createNotFoundException("Unable to find product by id: $id");
+    }   
+    return $product;
+  }
+
   /**
    * @Route("/show/{id}", name="product_show")
    */
   public function showAction(Request $request, $id)
   {
-    
-    $repo = $this->getRepo(); 
-    $product = $repo->findOneById($id);
-    if (!$product) 
-    {
-      throw $this->createNotFoundException("Unable to find product by id: $id");
-    }
-    return $this->render('product/product_show.html.twig', array('product' => $product));
-
+    return $this->render('product/product_show.html.twig', array('product' => $this->getProductById($id)));
   }
+
+  /** 
+   * @Route("/show/widget/{id}", name="product_show_widget")
+   */  
+  public function showWidgetAction(Request $request, $id)
+  { 
+    return $this->render('product/product_show_widget.html.twig', array('product' => $this->getProductById($id)));
+  }
+
 
   /**
    * @Route("/search", name="product_search")

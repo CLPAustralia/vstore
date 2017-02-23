@@ -19,8 +19,18 @@ class LoadPersonData extends AbstractFixture implements OrderedFixtureInterface
     $person->setLastName('Last Name 01');
     $person->addAddress($this->getReference('person1-address1'));
     $person->addAddress($this->getReference('person1-address2'));
-
     $manager->persist($person);
+    $this->addReference('person01', $person);
+
+    $person = new Person();
+    $person->setTitle('Miss');
+    $person->setFirstName('First Name 02');
+    $person->setLastName('Last Name 02');
+    $person->addAddress($this->getReference('person2-address1'));
+    $person->addAddress($this->getReference('person2-address2'));
+    $manager->persist($person);
+    $this->addReference('person02', $person);
+
     $manager->flush();
 
   }

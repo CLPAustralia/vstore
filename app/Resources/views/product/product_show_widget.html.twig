@@ -1,0 +1,8 @@
+{% extends 'base_widget.html.twig' %}
+
+{% block widget %}
+  <h3>{{ 'product.show'|trans }}</h3>
+  <p>{{ 'product.upc'|trans }}: {{ product.UPC }}</p>
+  <p>{{ 'product.name'|trans }}: {{ product.name }}</p>
+  <p>{{ 'product.description'|trans }}: {{ product.description }}</p>
+{% endblock%}

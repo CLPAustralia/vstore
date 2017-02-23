@@ -45,22 +45,33 @@ class CompanyController extends Controller
 
   }
 
-  /**
-   * @Route("/show/{id}", name="company_show")
-   */
-  public function showAction(Request $request, $id)
+  private function getCompanyById($id)
   {
-    
     $repo = $this->getRepo(); 
     $company = $repo->findOneById($id);
     if (!$company) 
-    {
+    {   
       throw $this->createNotFoundException("Unable to find company by id: $id");
-    }
-    return $this->render('company/company_show.html.twig', array('company' => $company));
-
+    }   
+    return $company;
   }
 
+  /**
+   * @Route("/show/{id}", name="company_show")
+   */
+  public function showAction($id)
+  {
+    return $this->render('company/company_show.html.twig', array('company' => $this->getCompanyById($id)));
+  }
+
+  /**
+   * @Route("/show/widget/{id}", name="company_widget_show")
+   */
+  public function showWidgetAction($id)
+  {
+    return $this->render('company/company_show_widget.html.twig', array('company' => $this->getCompanyById($id)));
+  }
+  
   /**
    * @Route("/search", name="company_search")
    */
@@ -84,7 +95,7 @@ class CompanyController extends Controller
       ->getQuery();
     $result = $query->getResult();
 
-    return $this->render('company/company_list_widget.html.twig', array('companyList' => $result, 'selectable' => $selectable)); 
+    return $this->render('company/company_list_widget.html.twig', array('companyList' => $result, 'selectable' => $selectable, 'widgetHeading' => 'Company List')); 
 
   }
 

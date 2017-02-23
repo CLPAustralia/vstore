@@ -25,23 +25,33 @@ class InventoryController extends Controller
 
     $inventory = new Inventory();
 
-    $form = $this->createForm(InventoryType::class, $inventory);
+    $productId = $request->request->get('productId');
+    $product = $this->getDoctrine()->getRepository('AppBundle:Product')->findOneById($productId);
 
-    $form->handleRequest($request);
+    $companyId = $request->request->get('companyId');
+    $company = $this->getDoctrine()->getRepository('AppBundle:Company')->findOneById($companyId);
 
-    if ($form->isSubmitted() && $form->isValid())
+    $vendorProductName = $request->request->get('vendor_product_name');
+    $quantity = $request->request->get('quantity');
+
+    // TODO: validation
+    if ($productId && $companyId) 
     {
 
-      $inventory = $form->getData();
+      $inventory->setVendor($company);
+      $inventory->setProduct($product);
+      $inventory->setVendorProductName($vendorProductName);
+      $inventory->setQuantity($quantity);
+
       $em = $this->getDoctrine()->getManager();
       $em->persist($inventory);
       $em->flush();
 
       return $this->redirectToRoute('inventory_show', array('id' => $inventory->getId()));
-
+    
     }
 
-    return $this->render('inventory/inventory_new.html.twig', array('form' => $form->createView()));
+    return $this->render('inventory/inventory_new.html.twig');
 
   }
 
@@ -74,19 +84,16 @@ class InventoryController extends Controller
    */
   public function listInventoryAction(Request $request){
 
-    $firstName = $request->request->get("firstName");
-    $lastName = $request->request->get("lastName");
+    $vendorProductName = $request->request->get("vendorProductName");
 
     $repo = $this->getRepo();
     $query = $repo->createQueryBuilder('p')
-      ->where('p.firstName like :firstName')
-      ->andWhere('p.lastName like :lastName')
-      ->setParameter('firstName', $firstName.'%')
-      ->setParameter('lastName', $lastName.'%')
+      ->where('p.vendorProductName like :vendorProductName')
+      ->setParameter('vendorProductName', $vendorProductName.'%')
       ->getQuery();
     $result = $query->getResult();
 
-    return $this->render('inventory/inventory_list_widget.html.twig', array('inventoryList' => $result)); 
+    return $this->render('inventory/inventory_list_widget.html.twig', array('inventoryList' => $result, 'widgetHeading' => 'Inventory List')); 
 
   }
 

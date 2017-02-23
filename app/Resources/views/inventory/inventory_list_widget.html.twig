@@ -1,0 +1,36 @@
+{% extends 'base_widget.html.twig' %}
+
+{% block widget %}
+
+  {% for inventory in inventoryList %}
+
+    <p>
+      {% if selectable is defined and selectable == true %}
+        <input type="radio" name="inventory" id="{{ inventory.id }}" >
+      {% endif %}
+      {{ 'product.name'|trans }}: {{ inventory.vendorProductName }}
+    </p>
+    <p>
+        {{ 'quantity'|trans }}: {{ inventory.quantity }}
+    </p>
+    <p>
+      {{ 'vendor'|trans }}: {{ inventory.vendor.name}}
+    </p>
+
+  {% endfor %}
+
+{% endblock %}
+
+{% block javascripts %}
+
+  {{ parent() }}
+
+  <script type="text/javascript">
+    var selectedInventoryId;
+    $("input[name='inventory']:radio").change(function() { 
+        selectedInventoryId = $(this).attr("id");
+    })  
+  </script>
+
+{% endblock %}
+

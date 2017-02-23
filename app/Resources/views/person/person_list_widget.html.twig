@@ -8,7 +8,7 @@
     {% if personSelectable is defined and  personSelectable == true %}
       <input type="radio" name="person" id="{{ person.id }}" >
     {% endif %}
-    {% trans %}Name:{% endtrans %} {{ person.title }}: {{ person.lastName }}, {{ person.firstName }}
+    {{ 'name'|trans }} {{ person.title }}: {{ person.lastName }}, {{ person.firstName }}
   </p>
   
   <h5>{{ 'addresses'|trans }}</h5>

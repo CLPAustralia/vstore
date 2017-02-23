@@ -57,16 +57,24 @@
                 <source>inventory.new</source>
                 <target>New Inventory</target>
             </trans-unit>
-            <trans-unit id="inventory.vendor">
-                <source>inventory.vendor</source>
+            <trans-unit id="inventory.show">
+                <source>inventory.show</source>
+                <target>Show Inventory</target>
+            </trans-unit>
+            <trans-unit id="inventory.search">
+                <source>inventory.search</source>
+                <target>Search Inventory</target>
+            </trans-unit>
+            <trans-unit id="vendor">
+                <source>vendor</source>
                 <target>Vendor</target>
             </trans-unit>
-            <trans-unit id="inventory.product">
-                <source>inventory.product</source>
-                <target>Product</target>
+            <trans-unit id="vendor.product.name">
+                <source>vendor.product.name</source>
+                <target>Vendor Product Name</target>
             </trans-unit>
-            <trans-unit id="inventory.quantity">
-                <source>inventory.quantity</source>
+            <trans-unit id="quantity">
+                <source>quantity</source>
                 <target>Quantity</target>
             </trans-unit>
 

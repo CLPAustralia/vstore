@@ -1,14 +1,11 @@
 {% extends 'base_widget.html.twig' %}
 
 {% block widget %}
-
   <form action="#" method="post">
     <label for="product_name">{{ 'product.name'|trans }}</label>
     <input type="text" id="product_name" />
   </form>
-
-  <div id="searchResult"></div>
-
+  <div id="productSearchResult"></div>
 {% endblock %}
 
 {% block javascripts %}
@@ -24,7 +21,7 @@
           url: "/product/list",
           data: {"name": $product_name, "selectable": "{{ selectable }}" },
           success: function(response) {
-            $("#searchResult").html(response);
+            $("#productSearchResult").html(response);
           }
         });
        });

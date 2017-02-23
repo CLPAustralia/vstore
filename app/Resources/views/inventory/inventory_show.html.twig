@@ -1,11 +1,13 @@
 {% extends 'base.html.twig' %}
 
 {% block title %}
-  {% trans %}Show Inventory{% endtrans %}
+  {{ 'inventory.show'|trans }}
 {% endblock %}
 
 {% block body %}
-  <p>{% trans %}Inventory Vendor:{% endtrans %} {{ inventory.vendorProduct.vendor.name }}</p>
-   <p>{% trans %}Inventory Name:{% endtrans %} {{ inventory.vendorProduct.name }}</p>
-   <p>{% trans %}Inventory Quantity:{% endtrans %} {{ inventory.quantity }}</p>
+  <h3>{{ 'inventory.show'|trans }}</h3>
+  <p>{{ 'vendor'|trans }}: {{ inventory.vendor.Name }}</p>
+  <p>{{ 'vendor.product.name'|trans }}: {{ inventory.vendorProductName }}</p>
+  <p>{{ 'product.name'|trans }}: {{ inventory.product.name }}</p>
+  <p>{{ 'quantity'|trans }}: {{ inventory.quantity }}</p>
 {% endblock%}
