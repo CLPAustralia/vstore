@@ -45,6 +45,25 @@ class CompanyController extends Controller
 
   }
 
+  /**
+   * @Route("/edit/{id}", name="company_edit")
+   */
+  public function editAction(Request $request, $id)
+  {
+    $company = $this->getCompanyById($id);
+    $form = $this->createForm(CompanyType::class, $company);
+    $form->handleRequest($request);
+    if ($form->isSubmitted() && $form->isValid())
+    {   
+      $em = $this->getDoctrine()->getManager();
+      $em->flush();
+
+      return $this->redirectToRoute('company_show', array('id' => $company->getId()));
+    }
+    return $this->render('company/company_edit.html.twig', array('form' => $form->createView()));
+    
+  }
+
   private function getCompanyById($id)
   {
     $repo = $this->getRepo(); 
@@ -63,7 +82,7 @@ class CompanyController extends Controller
   {
     $ignoreHeader = $request->request->get('ignoreHeader');
     $ignoreFooter = $request->request->get('ignoreFooter');
-    return $this->render('company/company_show.html.twig', array('company' => $this->getCompanyById($id), 'ignoreHeader' => $ignoreHeader, 'ignoreFooter' => $ignoreFooter));
+    return $this->render('company/company_show.html.twig', array('company' => $this->getCompanyById($id)));
   }
 
   /**

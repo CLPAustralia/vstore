@@ -1,5 +1,9 @@
 {% extends 'base.html.twig' %}
 
+{% block title %}
+  {{ 'inventory.search'|trans }}
+{% endblock %}
+
 {% block body %}
 
   <form action="#" method="post">
@@ -22,7 +26,7 @@
         $.ajax({
           type: "POST",
           url: "/inventory/list",
-          data: {"vendorProductName": $vendorProductName, "selectable": "{{ selectable }}" },
+          data: {"vendorProductName": $vendorProductName, "selectable": "{{ (selectable is defined) ? selectable : false }}", 'ignoreHeader': true, 'ignoreFooter': true },
           success: function(response) {
             $("#inventorySearchResult").html(response);
           }

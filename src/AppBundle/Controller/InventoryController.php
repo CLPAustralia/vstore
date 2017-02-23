@@ -85,6 +85,8 @@ class InventoryController extends Controller
   public function listInventoryAction(Request $request){
 
     $vendorProductName = $request->request->get("vendorProductName");
+    $ignoreHeader = $request->request->get('ignoreHeader');
+    $ignoreFooter = $request->request->get('ignoreFooter');
 
     $repo = $this->getRepo();
     $query = $repo->createQueryBuilder('p')
@@ -93,7 +95,7 @@ class InventoryController extends Controller
       ->getQuery();
     $result = $query->getResult();
 
-    return $this->render('inventory/inventory_list.html.twig', array('inventoryList' => $result)); 
+    return $this->render('inventory/inventory_list.html.twig', array('inventoryList' => $result, 'ignoreHeader' => $ignoreHeader, 'ignoreFooter' => $ignoreFooter)); 
 
   }
 

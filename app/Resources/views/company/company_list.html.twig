@@ -13,6 +13,10 @@
         <input type="radio" name="company" id="{{ company.id }}" >
       {% endif %}
       {{ 'company.name'|trans }} {{ company.name }}
+    <button onclick="window.location.href='{{ path("company_edit", {"id": company.id}) }}'">
+      {{ 'edit'|trans }}
+    </button>
+
     </p>
 
     <h5>{{ 'addresses'|trans }}</h5>
