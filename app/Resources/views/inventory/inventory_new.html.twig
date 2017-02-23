@@ -11,13 +11,13 @@
     <p> 
     <button id="select_vendor">{{ 'button.inventory.select.vendor'|trans }}</button>
     <div id="vendor_dialog">
-      {% include 'company/company_search_widget.html.twig' with {'selectable' : true} %}
+      {% include 'company/company_search.html.twig' with {'selectable' : true, 'ignoreHeader' : true, 'ignoreFooter' : true} %}
     </div>
     <div id="vendor"></div>
 
     <button id="select_product">{{ 'button.inventory.select.product'|trans }}</button>
     <div id="product_dialog">
-      {% include 'product/product_search_widget.html.twig' with {'selectable' : true} %}
+      {% include 'product/product_search.html.twig' with {'selectable' : true, 'ignoreHeader' : true, 'ignoreFooter' : true} %}
     </div>
     <div id="product"></div>
     </p>
@@ -58,8 +58,8 @@
           productDialog.dialog( "close" );
           $.ajax({
             type: "POST",
-            url: "/product/show/widget/" + selectedProductId,
-            data: {"id": selectedProductId },
+            url: "/product/show/" + selectedProductId,
+            data: {"id": selectedProductId, 'ignoreHeader': true, 'ignoreFooter': true },
             success: function(response) {
               $("#product").html(response);
               $('#newInventory').append("<input type='hidden' name='productId' value='" + selectedProductId + "' />");
@@ -86,8 +86,8 @@
           vendorDialog.dialog( "close" );
           $.ajax({
             type: "POST",
-            url: "/company/show/widget/" + selectedCompanyId,
-            data: {"id": selectedCompanyId },
+            url: "/company/show/" + selectedCompanyId,
+            data: {"id": selectedCompanyId, 'ignoreHeader': true, 'ignoreFooter': true },
             success: function(response) {
               $("#vendor").html(response);
               $('#newInventory').append("<input type='hidden' name='companyId' value='" + selectedCompanyId + "' />");

@@ -1,6 +1,6 @@
-{% extends 'base_widget.html.twig' %}
+{% extends 'base.html.twig' %}
 
-{% block widget %}
+{% block body %}
 
 {% for person in personList %}
 
@@ -9,6 +9,9 @@
       <input type="radio" name="person" id="{{ person.id }}" >
     {% endif %}
     {{ 'name'|trans }} {{ person.title }}: {{ person.lastName }}, {{ person.firstName }}
+    <button onclick="window.location.href='{{ path("person_edit", {"id": person.id}) }}'">
+      {{ 'edit'|trans }}
+    </button>
   </p>
   
   <h5>{{ 'addresses'|trans }}</h5>
@@ -21,11 +24,3 @@
 {% endfor %}
 {% endblock %}
 
-{% block javascripts %}
-{{ parent() }}
-<script type="text/javascript">
-    $("input[name='person']:radio").change(function() { 
-        alert($(this).attr("id"));
-    })
-</script>
-{% endblock %}

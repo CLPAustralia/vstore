@@ -93,7 +93,7 @@ class InventoryController extends Controller
       ->getQuery();
     $result = $query->getResult();
 
-    return $this->render('inventory/inventory_list_widget.html.twig', array('inventoryList' => $result, 'widgetHeading' => 'Inventory List')); 
+    return $this->render('inventory/inventory_list.html.twig', array('inventoryList' => $result)); 
 
   }
 

@@ -61,17 +61,10 @@ class ProductController extends Controller
    */
   public function showAction(Request $request, $id)
   {
-    return $this->render('product/product_show.html.twig', array('product' => $this->getProductById($id)));
+    $ignoreHeader = $request->request->get('ignoreHeader');
+    $ignoreFooter = $request->request->get('ignoreFooter');
+    return $this->render('product/product_show.html.twig', array('product' => $this->getProductById($id), 'ignoreHeader' => $ignoreHeader, 'ignoreFooter' => $ignoreFooter));
   }
-
-  /** 
-   * @Route("/show/widget/{id}", name="product_show_widget")
-   */  
-  public function showWidgetAction(Request $request, $id)
-  { 
-    return $this->render('product/product_show_widget.html.twig', array('product' => $this->getProductById($id)));
-  }
-
 
   /**
    * @Route("/search", name="product_search")
@@ -96,7 +89,7 @@ class ProductController extends Controller
       ->getQuery();
     $result = $query->getResult();
 
-    return $this->render('product/product_list_widget.html.twig', array('productList' => $result, 'selectable' => $selectable)); 
+    return $this->render('product/product_list.html.twig', array('productList' => $result, 'selectable' => $selectable, 'ignoreHeader' => true, 'ignoreFooter' => true)); 
 
   }
 

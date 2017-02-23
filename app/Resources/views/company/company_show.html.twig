@@ -2,8 +2,14 @@
 
 {% block title %}
   {{ 'company.show'|trans }}
-{% endblock %}
+{% endblock%}
 
 {% block body %}
-  {% include 'company/company_show_widget.html.twig' with {'widgetHeading': 'company.show'} %}
+  <p>{{ 'company.name'|trans }}: {{ company.name }}</p>
+  <h5>{{ 'addresses'|trans }}</h5>
+  <ul>
+    {% for address in company.addresses() %}
+    <li>{{ address.type }}: {{ address.addressLine1 }}, {{ address.addressLine2 }}</li>
+    {% endfor %}
+  </ul>
 {% endblock%}

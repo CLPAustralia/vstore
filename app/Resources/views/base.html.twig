@@ -10,6 +10,13 @@
              <style>
                  #nav-menu li { display: inline-block; }
                  #nav-menu li li { display: inline; }
+                 footer {
+                   position: absolute;
+                   bottom: 0;
+                   height: 100px;
+                   width: 100%;
+                   text-align: center;
+                 }
              </style>
             <link rel="stylesheet" href="{{ asset('css/jquery-ui.css') }}">
         {% endblock %}
@@ -20,6 +27,7 @@
     <body>
 
         {% block header %}
+            {% if ignoreHeader is not defined %}
             <header>
             <ul id="nav-menu">
                 <li><div><a href="{{ path("homepage") }}">{{ 'menu.home'|trans }}</a></div></li>
@@ -49,21 +57,27 @@
                 </li>
             </ul>
             </header>
+            {% endif %}
         {% endblock%}
 
         {% block body %}{% endblock %}
 
         {% block sidebar %} {% endblock %}
 
-        {% block footer %}<footer>&copy; Copyright 2017</footer>{% endblock %}
+        {% block footer %}
+          {% if ignoreFooter is not defined %}
+          <footer>&copy; Copyright 2017</footer>
+          {% endif %}
+        {% endblock %}
 
         {% block javascripts %}
             <script src="{{ asset('js/jquery.js') }}"></script>
             <script src="{{ asset('js/jquery-ui.js') }}"></script>
             <script type="text/javascript">
                 $(function(){
-                    $("#nav-menu").menu()
+                    $("#nav-menu").menu();
                     $('input').addClass("ui-widget ui-widget-content ui-corner-all");
+                    $('button').addClass("ui-button ui-widget ui-corner-all");
                 });
             </script>
         {% endblock %}

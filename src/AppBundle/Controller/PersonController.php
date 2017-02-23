@@ -103,7 +103,7 @@ class PersonController extends Controller
       ->getQuery();
     $result = $query->getResult();
 
-    return $this->render('person/person_list_widget.html.twig', array('personList' => $result)); 
+    return $this->render('person/person_list.html.twig', array('personList' => $result, 'ignoreHeader' => true, 'ignoreFooter' => true)); 
 
   }
 

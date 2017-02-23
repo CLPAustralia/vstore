@@ -8,7 +8,15 @@
 {% endblock %}
 
 {% block javascripts %}
-    <script src="{{ asset('js/jquery.js') }}"></script>
-    <script src="{{ asset('js/jquery-ui.js') }}"></script>
-{% endblock %}
 
+   <script src="{{ asset('js/jquery.js') }}"></script>
+   <script src="{{ asset('js/jquery-ui.js') }}"></script>
+
+   <script type="text/javascript">
+     $(function(){
+       $("#nav-menu").menu();
+       $('input').addClass("ui-widget ui-widget-content ui-corner-all");
+       $('button').addClass("ui-button ui-widget ui-corner-all");
+     }); 
+   </script>
+{% endblock %}

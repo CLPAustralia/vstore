@@ -5,6 +5,31 @@
 {% endblock %}
 
 {% block body %}
-  {% include 'product/product_search_widget.html.twig' with {'selectable' : false, 'widgetHeading': 'product.search'} %}
+  <form action="#" method="post">
+    <label for="product_name">{{ 'product.name'|trans }}</label>
+    <input type="text" id="product_name" />
+  </form>
+  <div id="productSearchResult"></div>
 {% endblock %}
 
+{% block javascripts %}
+
+  {{ parent() }}
+
+  <script type="text/javascript">
+    $(function(){
+      $("#product_name").keyup(function(){
+        $product_name = $("#product_name").val();
+        $.ajax({
+          type: "POST",
+          url: "/product/list",
+          data: {"name": $product_name, "selectable": "{{ (selectable is defined) ? selectable : false }}" },
+          success: function(response) {
+            $("#productSearchResult").html(response);
+          }
+        });
+       });
+    }); 
+  </script>
+
+{% endblock %}

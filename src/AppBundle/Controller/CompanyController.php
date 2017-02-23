@@ -59,19 +59,13 @@ class CompanyController extends Controller
   /**
    * @Route("/show/{id}", name="company_show")
    */
-  public function showAction($id)
+  public function showAction(Request $request, $id)
   {
-    return $this->render('company/company_show.html.twig', array('company' => $this->getCompanyById($id)));
+    $ignoreHeader = $request->request->get('ignoreHeader');
+    $ignoreFooter = $request->request->get('ignoreFooter');
+    return $this->render('company/company_show.html.twig', array('company' => $this->getCompanyById($id), 'ignoreHeader' => $ignoreHeader, 'ignoreFooter' => $ignoreFooter));
   }
 
-  /**
-   * @Route("/show/widget/{id}", name="company_widget_show")
-   */
-  public function showWidgetAction($id)
-  {
-    return $this->render('company/company_show_widget.html.twig', array('company' => $this->getCompanyById($id)));
-  }
-  
   /**
    * @Route("/search", name="company_search")
    */
@@ -95,7 +89,8 @@ class CompanyController extends Controller
       ->getQuery();
     $result = $query->getResult();
 
-    return $this->render('company/company_list_widget.html.twig', array('companyList' => $result, 'selectable' => $selectable, 'widgetHeading' => 'Company List')); 
+    return $this->render('company/company_list.html.twig', 
+      array('companyList' => $result, 'selectable' => $selectable, 'ignoreHeader' => true, 'ignoreFooter' => true)); 
 
   }
 

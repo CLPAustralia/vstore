@@ -1,6 +1,10 @@
-{% extends 'base_widget.html.twig' %}
+{% extends 'base.html.twig' %}
 
-{% block widget %}
+{% block title %}
+  {{ 'inventory.list'|trans }}
+{% endblock %}
+
+{% block body %}
 
   {% for inventory in inventoryList %}
 

@@ -32,7 +32,11 @@
             <trans-unit id="person.search">
                 <source>person.search</source>
                  <target>Search Person</target>
-             </trans-unit>
+            </trans-unit>
+            <trans-unit id="person.edit">
+                <source>person.edit</source>
+                 <target>Edit Person</target>
+            </trans-unit>
 
             <!-- Company -->
             <trans-unit id="company.new">
@@ -64,6 +68,10 @@
             <trans-unit id="inventory.search">
                 <source>inventory.search</source>
                 <target>Search Inventory</target>
+            </trans-unit>
+            <trans-unit id="inventory.list">
+                <source>inventory.list</source>
+                <target>List Inventory</target>
             </trans-unit>
             <trans-unit id="vendor">
                 <source>vendor</source>
@@ -120,6 +128,12 @@
             <trans-unit id="product.show">
                 <source>product.show</source>
                 <target>Show Product</target>
+            </trans-unit>
+
+            <!-- Misc -->
+            <trans-unit id="name">
+                <source>name</source>
+                <target>Name</target>
             </trans-unit>
 
             <!-- Menu -->

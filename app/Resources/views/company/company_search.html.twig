@@ -5,6 +5,31 @@
 {% endblock %}
 
 {% block body %}
-  {% include 'company/company_search_widget.html.twig' with {'selectable' : false, 'widgetHeading': 'company.search'} %}
+  <form action="#" method="post">
+    <label for="company_name">{{ 'company.name'|trans }}</label>
+    <input type="text" id="company_name" />
+  </form>
+  <div id="companySearchResult"></div>
 {% endblock %}
 
+{% block javascripts %}
+
+  {{ parent() }}
+
+  <script type="text/javascript">
+    $(function(){
+      $("#company_name").keyup(function(){
+        $company_name = $("#company_name").val();
+        $.ajax({
+          type: "POST",
+          url: "/company/list",
+          data: {"name": $company_name, "selectable": "{{ (selectable is defined) ? selectable : false }}" },
+          success: function(response) {
+            $("#companySearchResult").html(response);
+          }
+        });
+       });
+    }); 
+  </script>
+
+{% endblock %}
